@@ -106,23 +106,19 @@ int main(void)
   uint8_t choice = 1;
 	while (1)
 	{
-//		choice = selectDirect(choice);
-//		switch(choice)
-//		{
-//			case 0: pattern = 1<<index;
-//					if(index==0) index=8;
-//					index = abs(index-1)%8;
-//					break;
-//			case 1: pattern = 1<<index;
-//					index = abs(index+1)%8;
-//					break;
-//		}
-		pattern = 1<<index;
-		if(index==0) index=8;
-		index = abs(index-1)%8;
+		choice = selectDirect(choice);
+		switch(choice)
+		{
+			case 0: pattern = 1<<index;
+					if(index==0) index=8;
+					index = abs(index-1)%8;
+					break;
+			case 1: pattern = 1<<index;
+					index = abs(index+1)%8;
+					break;
+		}
 		ByteDataWrite(pattern);
 		HAL_Delay(300);
-
 
   /* USER CODE END WHILE */
 
