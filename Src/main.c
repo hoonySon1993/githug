@@ -106,10 +106,6 @@ int main(void)
   uint8_t choice = 1;
 	while (1)
 	{
-		pattern = 1<<index;
-		index = (index+1)%8;
-		ByteDataWrite(pattern);
-		HAL_Delay(300);
 //		choice = selectDirect(choice);
 //		switch(choice)
 //		{
@@ -121,8 +117,10 @@ int main(void)
 //					index = abs(index+1)%8;
 //					break;
 //		}
-//		ByteDataWrite(pattern);
-//		HAL_Delay(300);
+		pattern = 1<<index;
+		index = (index+1)%8;
+		ByteDataWrite(pattern);
+		HAL_Delay(300);
 
 
   /* USER CODE END WHILE */
