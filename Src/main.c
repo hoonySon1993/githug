@@ -118,7 +118,8 @@ int main(void)
 //					break;
 //		}
 		pattern = 1<<index;
-		index = (index+1)%8;
+		if(index==0) index=8;
+		index = abs(index-1)%8;
 		ByteDataWrite(pattern);
 		HAL_Delay(300);
 
