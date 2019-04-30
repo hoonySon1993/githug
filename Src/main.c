@@ -39,8 +39,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
-#include "hc595.h"
 /* USER CODE BEGIN Includes */
+#include "hc595.h"
 
 /* USER CODE END Includes */
 
@@ -48,14 +48,14 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+int selectDirect(uint8_t choice);
+void ByteDataWrite(uint8_t data);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-int selectDirect(uint8_t choice);
-void ByteDataWrite(uint8_t data);
+
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -106,30 +106,23 @@ int main(void)
   uint8_t choice = 1;
 	while (1)
 	{
-//		if(choice==1)
-//		{
-//			pattern = 1<<index;
-//			index = (index+1)%8;
-//			ByteDataWrite(pattern);
-//			HAL_Delay(300);
-//		}
-//		else if(choice==0)
-//		{
-//
-//		}
-		choice = selectDirect(choice);
-		switch(choice)
-		{
-			case 0: pattern = 1<<index;
-					if(index==0) index=8;
-					index = abs(index-1)%8;
-					break;
-			case 1: pattern = 1<<index;
-					index = abs(index+1)%8;
-					break;
-		}
+		pattern = 1<<index;
+		index = (index+1)%8;
 		ByteDataWrite(pattern);
 		HAL_Delay(300);
+//		choice = selectDirect(choice);
+//		switch(choice)
+//		{
+//			case 0: pattern = 1<<index;
+//					if(index==0) index=8;
+//					index = abs(index-1)%8;
+//					break;
+//			case 1: pattern = 1<<index;
+//					index = abs(index+1)%8;
+//					break;
+//		}
+//		ByteDataWrite(pattern);
+//		HAL_Delay(300);
 
 
   /* USER CODE END WHILE */
